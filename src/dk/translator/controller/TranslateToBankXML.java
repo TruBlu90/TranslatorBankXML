@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dk.translatorbankxml.controller;
+package dk.translator.controller;
 
 import com.google.gson.Gson;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.QueueingConsumer;
-import dk.translatorbankxml.dto.LoanRequestDTO;
-import dk.translatorbankxml.messaging.Receive;
-import dk.translatorbankxml.messaging.Send;
+import dk.translator.dto.LoanRequestDTO;
+import dk.translator.messaging.Receive;
+import dk.translator.messaging.Send;
 import java.io.IOException;
 import java.util.HashMap;
 import javax.xml.bind.JAXBException;

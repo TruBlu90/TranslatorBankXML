@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dk.translatorbankxml.controller;
+package dk.translator.controller;
 
-import dk.translatorbankxml.dto.LoanRequest;
-import dk.translatorbankxml.dto.LoanRequestDTO;
+import dk.translator.dto.LoanRequest;
+import dk.translator.dto.LoanRequestDTO;
 import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

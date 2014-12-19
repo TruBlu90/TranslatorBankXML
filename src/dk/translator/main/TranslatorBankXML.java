@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package translatorbankxml;
+package dk.translator.main;
 
-import dk.translatorbankxml.controller.TranslateToBankXML;
+import dk.translator.controller.TranslateToBankXML;
 import java.io.IOException;
 import javax.xml.bind.JAXBException;
 
