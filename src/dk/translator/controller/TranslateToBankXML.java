@@ -36,33 +36,27 @@ public class TranslateToBankXML
         
         LoanRequestDTO loanRequest;
         String loanRequestXML;
-//        List<String> selectedBanks;
         
         while (true) 
         {
-          QueueingConsumer.Delivery delivery = consumer.nextDelivery();
-          String message = new String(delivery.getBody());
-          
-          AMQP.BasicProperties props = delivery.getProperties();
-          AMQP.BasicProperties replyProps = new AMQP.BasicProperties.Builder().correlationId(props.getCorrelationId()).replyTo(REPLY_QUEUE_NAME).build();
-          
-          String routingKey = delivery.getEnvelope().getRoutingKey();
+            QueueingConsumer.Delivery delivery = consumer.nextDelivery();
+            String message = new String(delivery.getBody());
 
-          System.out.println(" [x] Received '" + routingKey + "':'" + message + "'");
-          
-          loanRequest = gson.fromJson(message, LoanRequestDTO.class);
-          loanRequestXML = XMLConverter.convertToXML(loanRequest);
-          /*
-          StringBuilder sb = new StringBuilder(loanRequest.getSsn());
-          sb.deleteCharAt(6);
-          long ssnJSON = Long.parseLong(sb.toString());
-          */
-          
+            AMQP.BasicProperties props = delivery.getProperties();
+            AMQP.BasicProperties replyProps = new AMQP.BasicProperties.Builder().correlationId(props.getCorrelationId()).replyTo(REPLY_QUEUE_NAME).build();
+
+            String routingKey = delivery.getEnvelope().getRoutingKey();
+
+            System.out.println(" [x] Received '" + routingKey + "':'" + message + "'");
+
+            loanRequest = gson.fromJson(message, LoanRequestDTO.class);
+
+            loanRequestXML = XMLConverter.convertToXML(loanRequest);
           
             System.out.println(loanRequestXML);
             Send.sendMessage(loanRequestXML, replyProps);
           
-          channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
+            channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
 
         }
         
