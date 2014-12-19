@@ -33,9 +33,9 @@ public class XMLConverter
         
         LoanRequest loanRequestXML = new LoanRequest();
         loanRequestXML.setSsn(ssnXML);
-        loanRequestXML.setCreditScore(loanRequestdto.getCreditScore());
         loanRequestXML.setLoanAmount(loanRequestdto.getLoanAmount());
         loanRequestXML.setLoanDuration(loanDuration);
+        loanRequestXML.setCreditScore(loanRequestdto.getCreditScore());
         
         JAXBContext jaxbcontext = JAXBContext.newInstance(LoanRequest.class);
         Marshaller marchaller = jaxbcontext.createMarshaller(); 
