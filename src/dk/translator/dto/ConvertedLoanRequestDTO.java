@@ -5,23 +5,35 @@
  */
 package dk.translator.dto;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import java.io.Serializable;
 
-@XmlRootElement
-@XmlType(propOrder={"ssn", "creditScore", "loanAmount", "loanDuration"})
-public class LoanRequest 
+/**
+ *
+ * @author Jon
+ */
+public class ConvertedLoanRequestDTO implements Serializable 
 {
-     long ssn;
-     int creditScore;
-     double loanAmount;
-     String loanDuration;
+    private static final long serialVersionUID = 1L;
+   
+    private long ssn;
+    private int creditScore;
+    private double loanAmount;
+    private String loanDuration;
+    
+    public ConvertedLoanRequestDTO() {
+    }
+
+    public ConvertedLoanRequestDTO(long ssn, int creditScore, double loanAmount, String loanDuration) {
+        this.ssn = ssn;        
+        this.creditScore = creditScore;
+        this.loanAmount = loanAmount;
+        this.loanDuration = loanDuration;
+    }
 
     public long getSsn() {
         return ssn;
     }
-    @XmlElement
+
     public void setSsn(long ssn) {
         this.ssn = ssn;
     }
@@ -29,7 +41,7 @@ public class LoanRequest
     public int getCreditScore() {
         return creditScore;
     }
-    @XmlElement
+
     public void setCreditScore(int creditScore) {
         this.creditScore = creditScore;
     }
@@ -37,7 +49,7 @@ public class LoanRequest
     public double getLoanAmount() {
         return loanAmount;
     }
-    @XmlElement
+
     public void setLoanAmount(double loanAmount) {
         this.loanAmount = loanAmount;
     }
@@ -45,9 +57,10 @@ public class LoanRequest
     public String getLoanDuration() {
         return loanDuration;
     }
-    @XmlElement
+
     public void setLoanDuration(String loanDuration) {
         this.loanDuration = loanDuration;
     }
-     
+    
+    
 }
